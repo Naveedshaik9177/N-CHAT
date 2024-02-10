@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="images/png" href="N-chat3.jpg">
+    <title>Guest Login</title>
+    <style>
+     body {
+    font-family: 'Arial', sans-serif;;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url("N-chat3.jpg") center/cover no-repeat; ;
+}
+
+.login-container {
+    width: 360px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 23px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 402px;
+  background-image: url(light..jpg);
+  color: aliceblue;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 60px;
+}
+
+button {
+    background-color: black;
+    color:white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    
+    background-color: black;
+}
+.hover {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+.hover a {
+    text-decoration: none;
+    color:white;
+    transition: color 0.3s ease; 
+
+}
+
+.hover a:hover {
+    color:white; 
+}
+
+
+.back {
+    margin-top: 20px; 
+}
+
+.back button {
+    background-color: black; 
+    color: #ffffff; 
+    padding: 10px 15px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+.back button:hover {
+    background-color:blue; 
+}
+.back button a {
+    color: inherit; 
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="backbutton">
+        <button onclick="goBack()" style="background: none; border: none; position: absolute; top: 20px; left: 20px; cursor: pointer;">
+            <img src="icons8-back-48.png" alt="Back" width="30" height="30">
+        </button>
+    </div>
+      
+     
+
+
+
+    <div class="login-container">
+      
+      
+
+
+
+        <h1>Guest Login</h1>
+        <form id="guestLoginForm">
+            <label for="guestUsername">Username:</label>
+            <input type="text" id="guestUsername" name="guestUsername" required>
+
+            <!-- <label for="guestPassword">Password:</label>
+            <input type="password" id="guestPassword" name="guestPassword" required> -->
+             <div class="back">
+            <button type="button" onclick="guestLogin()"><a href="./n3.html">Login as Guest</a></button>
+        </div>
+        </form>
+        <div class="hover">
+            <button type="button" onclick="Backtologin()"><a href="./login.html">Back to Login</a></button>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+               </script>        
+      
+
+    <script src="script.js"></script>
+</body>
+</html>

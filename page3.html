@@ -1,0 +1,545 @@
+<html lang="en" >
+<head>
+  <link rel="icon" type="images/png" href="../images/N-chat3.jpg">
+  <link rel="stylesheet"> 
+  <style>
+    button {
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.m-t-80 {
+  margin-top: 80px !important;
+}
+
+
+body {
+  width: 100%;
+  margin: 0;
+ 
+  height: 100%
+}
+ .background { 
+      width: 300vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: url(N-chat6.jpg) no-repeat center center fixed;
+       background-size: cover;  
+       opacity: 0.5;
+    }
+
+a {
+  text-decoration: none;
+}
+
+#app {
+  width: 100%;
+ 
+}
+
+.home__landing_body {
+  width: 100%;
+  background: #fefbe7;
+  position: relative;
+  /* overflow-x: hidden; */
+}
+
+.home__header {
+  width: 100%;
+  height: 70px;
+  padding: 0 20px;
+  width: 100%;
+   position: absolute; 
+  top: 0;
+  left: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  background: #1f1f1f;
+}
+
+.home__navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home__N_icon {
+  width: 86px;
+  height: 70px;
+}
+
+.home__navbar_text {
+  display: flex;
+  align-items: center;
+}
+
+.home__navbar_online_num {
+  font-weight: 600;
+  margin-right: 4px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.home__navbar_online_text {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400 !important;
+  margin: 0 !important;
+}
+
+.home__main {
+  overflow-x: hidden;
+}
+
+.home__page_bg_con {
+  background: #1f1f1f;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5.625rem;
+  padding-bottom: 7.5rem;
+  box-sizing: border-box;
+}
+
+.home__page_bg {
+  width: 100%;
+  height: 445px;
+  
+  background-position: center;
+  background-size: contain;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;    
+}
+
+/*  */
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(N-chat2.jpg) no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3; 
+}
+.home__container {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+.home__N_select,
+.home__start_chat {
+  width: 30.75rem;
+  height: 4.75rem;
+  border-radius: 2.75rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.625rem;
+  font-weight: bold;
+  color: #170a2e;
+  margin-top: 14px;
+  transition: background 0.2s;
+}
+
+
+.home__N_select_con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home__N_select_con_animate {
+  animation: bounce-up 0.25s linear 4;
+}
+
+.home__s_text:hover{
+    background: #f3b808;
+}
+
+.home__start_chat:hover {
+  background: #f3b808;
+}
+
+.home__n_icon {
+  width: 7.3rem;
+  height: 4.2rem;
+  margin-right: 6px;
+  border-radius: 10px;
+}
+
+[dir=rtl] .home__sex_icon {
+  margin-right: 0;
+  margin-left: 6px;
+}
+
+.home__start_chat {
+  background-color: #ffffff;
+}
+
+.home__agreement {
+  width: 80%;
+  max-width: 470px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  
+  position: relative;
+}
+
+
+
+.home__page_bg_bottom {
+  width: 100%;
+  padding: 0 140px;
+  height: 90px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: -120px;
+  left: 0px;
+  background: #1f1f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 760px) {
+  .home__page_bg_bottom {
+    padding: 0;
+  }
+}
+
+.home__user_area {
+  width: 33.3%;
+}
+
+.home__user_num {
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  color: #fff;
+}
+
+.home__user_text {
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+  margin-top: 2px;
+}
+
+
+
+    body {
+      margin: 0;
+    }
+  
+    html {
+      padding-top: constant(safe-area-inset-top);
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: constant(safe-area-inset-bottom);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  
+   
+
+
+#homeSelectMale {
+  margin-right: -4px;
+  width: 150px;
+  height: 50px;
+}
+
+#homeSelectFemale {
+  margin-right: -4px;
+  width: 150px;
+  height: 50px;
+}
+.home__N_select {
+  margin-bottom: -10px;
+}
+
+
+.home__N_select_small {
+  width: 59px;
+  height: 25px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 550px;
+ 
+}.type-of-chat-list {
+      display: none;
+      position: absolute;
+      background-color: #131313;
+      border-radius: 8px;
+      padding: 10px;
+      z-index: 2; 
+      max-height: 200px; 
+      overflow-y: auto;
+      margin-left: 280px;
+    }
+
+    .type-of-chat-item {
+      color: white;
+      cursor: pointer;
+      margin-bottom: 5px;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .type-of-chat-item:hover {
+      background-color: #f3b808;
+    }
+    .home__buttons {
+      margin-left: 175px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 900px;
+}
+
+.home__start_chat,
+.home__N_select {
+  flex: 1;
+  margin-right: 10px; 
+
+
+}
+   .home__N_select:hover{
+    background-color: #f3b808;
+
+   }
+  </style>
+
+
+ 
+
+<script>
+  function toggleChatRooms() {
+    const chatRoomsList = document.getElementById("typeOfChatList");
+    const startButton = document.getElementById("homeStartchat");
+    const slButton = document.getElementById("homeSeBtn");
+
+   
+    chatRoomsList.style.display = (chatRoomsList.style.display === 'none' || chatRoomsList.style.display === '') ? 'block' : 'none';
+
+    
+    startButton.style.backgroundColor = (chatRoomsList.style.display === 'block') ? '#f3b808' : '';
+    slButton.style.backgroundColor = ''; 
+  }
+  function toggleGenderButtons() {
+    
+    window.location.href = 'n4chatbox.html';
+  }
+
+  let selectedChatRoom = null;
+
+function toggleChatRooms() {
+    const chatRoomsList = document.getElementById("typeOfChatList");
+    const startButton = document.getElementById("homeStartchat");
+    const slButton = document.getElementById("homeSeBtn");
+
+   
+    chatRoomsList.style.display = (chatRoomsList.style.display === 'none' || chatRoomsList.style.display === '') ? 'block' : 'none';
+
+    startButton.style.backgroundColor = (chatRoomsList.style.display === 'block') ? '#f3b808' : '';
+    slButton.style.backgroundColor = ''; 
+}
+
+function toggleGenderButtons() {
+    window.location.href = 'n4chatbox.html';
+}
+
+function selectChatRoom(event) {
+    const clickedElement = event.target;
+    const chatRoomName = clickedElement.textContent.trim();
+
+    const chatRoomListItems = document.querySelectorAll(".type-of-chat-item");
+
+    
+    chatRoomListItems.forEach(item => {
+        item.style.backgroundColor = '';
+    });
+
+    
+    clickedElement.style.backgroundColor = '#f3b808'; 
+    selectedChatRoom = chatRoomName; 
+}
+
+function startChat() {
+  if (selectedChatRoom) {
+           
+           
+            let url;
+            switch (selectedChatRoom) {
+
+               case '🌟Friendly Chat Room':
+                    url = '1 friend.html';
+                    break;
+                // case '🌟Friendly Chat Room':
+                //     url = 'friend.html';
+                //     break;
+                case '👫Teen chat Room':
+                    url = '2 teen.html';
+                    break;
+                case '🌐General Chat Room':
+                    url = '3 general.html';
+                    break;
+                case '💻TechTalk Chat Room':
+                    url = '4 techtalk.html';
+                    break;
+                case '📚Book Lovers Chat Room':
+                    url = '5 booklovers.html';
+                    break;
+                case '🎵Music Mania Chat Room':
+                    url = ' 6musicmania.html';
+                    break;
+                case '💪Fitness Chat Room':
+                    url = '7fitness.html';
+                    break;
+                case '🍔FoodiesChat Room':
+                    url = '8foodies.html';
+                    break;
+                case '🍿Movies Chat Room':
+                    url = '9movies.html';
+                    break;
+                case '🎮GamingZone Chat Room':
+                    url = '10gamingzone.html';
+                    break;
+                case '🌐Languages Chat Room':
+                    url = '11languages.html';
+                    break;
+                case '🤝 Random  Chat Room':
+                    url = '12random.html';
+                    break;
+                case '🐾 Pet Lovers Chat Room':
+                    url = '13petlovers.html';
+                    break;
+                case 'Adult chat Room:':
+                    url = '14adult.html';
+                    break;
+                
+                default:
+                   
+                    break;
+            }
+
+
+            
+            window.location.href = url;
+        } else {
+           
+            alert('Please select a chat room first.');
+        }
+    }
+</script>
+
+
+
+
+
+
+  
+
+
+
+   
+
+
+  
+</head>
+
+<body>
+  <!-- <van-nav-bar safe-area-inset-top> -->
+    <body>
+        <div id="app">
+          <!-- <div id="homePageLandingBody" class="home__landing_body"> -->
+            <!-- <div id="homePcLandingBody" class="home__pc_landing_body"> -->
+              <div class="background"></div>  
+              <header class="home__header">
+                <nav class="home__navbar">
+                  <div class="home__navbar_left">
+                    <a href=""><img alt="N-chat" src="N-chat.jpg" class="home__N_icon"></a>
+                  </div>
+                </nav>
+              </header>
+              <main class="home__main">
+                <div class="home__page_bg_con" id="homePageBgCon">
+                  <div class="home__page_bg" id="homePageBg">
+                    <div class="home__page_bg_content">
+                     
+                      <div class="backbutton" >
+                        <button onclick="goBack()"   style="margin-right: 1200px;margin-top: -170px;background:none;">
+                            <img src="icons8-back-48.png" alt="Back" width="30" height="30">
+                          
+                        </button>
+                      </div>
+                      
+                      <script>
+                      function goBack() {
+                        window.history.back();
+                      }
+                             </script>        
+  
+
+
+
+  
+</script>
+
+                      <div class="home__page_bg_content">
+                        <div class="home__buttons">
+                          <button class="home__start_chat" id="homeStartchat" onclick="toggleChatRooms()">Type of Chats Room</button>
+                          <button class="home__N_select" id="homeSeBtn" onclick="startChat()">
+                            <div class="home__N_select_con" id="homeSSelectCon">
+                                <img src="N-chat2.jpg"style="border-radius=" id="homeSelectsexIcon" class="home__n_icon">
+                                <span class="home__s_text" id="homeSelectsText">Start now &rarr;</span>
+                            </div>
+                        </button>
+                        </div>
+                      
+                            <div class="type-of-chat-list" id="typeOfChatList" style="margin-top: -8px;">
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)"> 🌟Friendly Chat Room</div>
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">👫Teen chat Room</div>
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">🌐General Chat Room</div>
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">💻TechTalk Chat Room</div>      
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">📚Book Lovers Chat Room</div>
+                              <div class="type-of-chat-item"onclick="selectChatRoom(event)">🎵Music Mania Chat Room</div>     
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">💪Fitness Chat Room</div>    
+                              <div class="type-of-chat-item"onclick="selectChatRoom(event)">🍔FoodiesChat Room</div>   
+                              <div class="type-of-chat-item"onclick="selectChatRoom(event)">🍿Movies Chat Room </div>  
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">🎮GamingZone Chat Room </div>   
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">🌐Languages Chat Room</div>   
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)"> 🤝 Random  Chat Room </div> 
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">🐾 Pet Lovers Chat Room</div>   
+                              <div class="type-of-chat-item" onclick="selectChatRoom(event)">Adult chat Room:</div>   
+                               
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </body>
+      </html>
+  
+
+            
+       

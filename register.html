@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="images/png" href="N-chat3.jpg">
+  <title>register.N-chat </title>
+  <link rel="stylesheet" href="register.css">
+  <style>
+     html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+     body {
+        font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    background: url("N-chat3.jpg") center/cover no-repeat; ;
+    background-color: rgba(255, 255, 255, 0.1); 
+  
+    backdrop-filter:blur(5px) ;
+     }
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8) url(light..jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    color: rgb(248, 242, 242);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="radio"],
+.form-group select {
+    width: 100%; /* Set the width to 100% for consistency */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.form-group {
+    margin: 20px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button:hover {
+    background-color: plum;
+}
+
+  </style>
+</head>
+<body>
+  <div class="backbutton" >
+    <button onclick="goBack()"   style="margin-right: 1200px;margin-top: 10px;background:none;">
+        <img src="icons8-back-48.png" alt="Back" width="30" height="30">
+      
+    </button>
+  </div>
+  
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+         </script>        
+ 
+    <div class="container">
+      
+      <form onsubmit="showAlert()">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label>Gender:</label>
+          <input type="radio" id="male" name="gender" value="male">
+          <label for="male">Male</label>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female">Female</label>
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input style="margin-left:20px;" id="age" name="age">
+        </div>
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <input style="margin-left: 20px ;"   type="text" id="country" name="country">
+        </div>
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input style="margin-left: 50px ;"type="text" id="city" name="city">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input style="margin-left: 41px ;" type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input style="margin-left: 15px ;" type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <button style="margin-left: 20px ;" type="button" onclick="register()"><a href="login.html">Register</a></button>
+        </div>
+      </form>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+      function showAlert() {
+        alert("Registration successful!");
+      }
+    </script>
+  </body>
+</html>

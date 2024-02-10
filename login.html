@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="icon" type="images/png" href="../images/N-chat3.jpg">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: block;
+    overflow: hidden;
+    background: url("N-chat3.jpg") center/cover no-repeat; ;
+    background-color: rgba(255, 255, 255, 0.1); 
+    background-position: center top;;
+    backdrop-filter:blur(5px) ;
+   
+}
+header {
+    margin-top: 0px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+
+}
+.header .logo{
+    text-align: left;
+
+}
+.logo img {
+    width: 100px; 
+    height: auto; 
+}
+
+.logo{
+    margin-top: -85px;
+    margin-right: 50px;
+}
+.login-container {
+    max-width: 550px;
+   
+    margin: 50px auto;
+    height: 50vh;
+    background: url("123.jpg") center/cover no-repeat;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    margin-left: 100px;
+    background-color: #ffffff;
+    width: 80px;
+    color: rgb(10, 9, 9);
+    border-radius: 5px;
+}
+
+input {
+   
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 400px;
+  margin-left: 90px;
+  
+}
+button {
+    background-color:burlywood;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px ;
+    text-align:end;
+    
+    height: 420px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer div {
+    margin-bottom: 10px;
+}
+.footer-container div {
+    flex: 1;
+}
+.copyright {
+    margin-top: 20px;
+}
+
+.footer-container a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.footer-container a:hover {
+    text-decoration: underline;
+}
+.guest {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: -145px;
+}
+
+button {
+    background-color: black;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none; 
+    margin-left: 180px;
+    width: 200px;
+    margin-top:6px;
+}
+
+button:hover {
+    background-color:#f3b808;
+}  
+.forgotpass {
+            text-align: center;
+            margin-top: -15px;
+        }
+
+        .forgotpass button {
+            background-color: transparent;
+            color: #e1f908; 
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 14px;
+            margin-left: 380px;
+        }
+
+        .forgotpass button:hover {
+            text-decoration: underline; 
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+
+        <h1></h1>
+
+        <div class="logo">
+        <a href="#home"><img  src="imges/logo c.jpg" class="p" alt="Logo"></a>
+        </div>
+       
+    </header>
+
+    
+    <div class="login-container" >
+        <form id="loginForm" onsubmit="return validateLogin()">
+
+           
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="forgotpass">
+                <button type="button" onclick="forgotPassword()">Forgot Password</button>
+            </div>
+            <button type="submit">Login</button>
+            <button type="button" onclick="Register()">Register</button>
+        </form>
+        
+        <div class="guest" style="margin-left: -174px;">
+            <button type="button" onclick="GUESTLOGIN()"><a href="./guest.html">GUEST LOGIN</a></button>
+    
+        </div>
+    </div> 
+       
+  
+    <footer>
+        <div class="footer-container">
+            <div>
+                <a href="/about">About Us</a> |
+                <a href="/contact">Contact</a> |
+                <a href="/faq">FAQ</a> |
+                <a href="#" id="advertiseLink">Advertise with us</a>
+            </div>
+    
+            <div class ="social"style="margin-left:900px;margin-top:-20px;" >
+                <a href="#" target="_blank">Facebook</a> |
+                <a href="#" target="_blank">Twitter</a> |
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+    
+            <marquee direction="left" style=" font-size: 20px;">innovious@gmail.com / 123 Main Street, marathahalli, Bangalore</marquee>
+    
+            <div class="copyright">
+                &copy; 2023 Your Website. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+        <script>
+            function validateLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username.trim() === "" || password.trim() === "") {
+                alert("Please enter both username and password");
+                return false; 
+            } else {
+                alert("Login successful");
+               
+                window.location.href = "page2.html"; 
+                return false; 
+            }
+        }
+
+        function Register() {
+         
+            alert("Redirecting to registration page");
+            window.location.href = "./register.html";
+        }
+
+        function GUESTLOGIN() {
+            
+            alert("Redirecting to guest login page");
+            window.location.href = "./guest.html";
+        }
+        document.getElementById("advertiseLink").addEventListener("click", function() {
+   
+    var filePath = 'advertise.html';
+    
+   
+    window.open(filePath, '_blank');
+  });
+
+  function forgotPassword() {
+            alert("Redirecting to forgot password page");
+            // Add the URL for the forgot password page
+            window.location.href = "./forgot.html";
+        }
+        
+    </script>   
+        
+</body>
+</html>

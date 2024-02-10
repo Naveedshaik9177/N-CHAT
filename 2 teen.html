@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="images/png" href="../images/N-chat3.jpg">
+    <title>N chat</title>
+    <style>
+       
+       
+
+        #chat-messages::-webkit-scrollbar {
+            display: none;
+        }
+
+        
+        #background-container {
+            background-image: url('N-chat2.jpg'); 
+            
+            background-size: cover;
+            flex-grow: 1; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 15px;
+            bottom: 5px;
+            opacity: 0.2; 
+            z-index: -1; 
+        }
+     
+
+        #chat-background {
+            background-image: url('N-chat2.jpg'); 
+            background-size: cover;
+            flex-grow: 1; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 15px;
+            bottom: 5px;
+            opacity: 0.2; 
+            z-index: -1; 
+            overflow: hidden;
+        }
+
+        .message {
+            max-width: 70%;
+            word-wrap: break-word;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            position: relative; 
+            z-index: 1; 
+            
+        }
+
+        .you {
+            color: white;
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            align-self: flex-start;
+            margin-left: 600px;
+        }
+
+        .stranger {
+            color: #efeff3;
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            align-self: flex-end;
+            margin-right: 570px;
+        }
+
+        #input-container {
+            position: absolute;
+            display: flex;
+            width: 80%;
+            flex-direction: row;
+            bottom: 0;
+            right: 0;
+            background-color: beige;
+            padding: 20px;
+            z-index: 1;
+         
+            
+        }
+
+     #chat-messages {
+            overflow-y: auto;
+            height: 72vh;
+            position: relative;
+            align-self: center ;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+            width: 1000px;
+            scrollbar-width: none;
+            z-index: -1;
+            margin-bottom: 50px;
+            scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+           
+        
+   
+       
+
+
+        #chat-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            margin-top: 50px;
+        }
+        .user-list {
+            display: none; 
+    position: fixed;
+    background-color: #171515;
+    border: 1px solid #000000;
+    padding: 0%;
+    /* margin-top: 47px; */
+    width: 15%;
+    height: 85%;
+    margin-top: 6%;
+    max-height: 100%;
+    overflow-y: auto;
+        }
+        
+
+
+.user-list div {
+    background-color: #dddddd; 
+    margin-bottom: 8px; 
+    padding: 8px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.user-list div:hover {
+    background-color: #cccccc; 
+}
+#search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#search-bar img {
+    margin-right: 10px; 
+}
+.search-input {
+    background: url('search-icon.png') no-repeat 10px center;
+    padding-left: 40px; 
+    width: 200px;
+    height: 30px; 
+    border: 1px solid #ccc; 
+}
+
+.type-of-chat-list {
+    display: none;
+    position: absolute;
+    background-color: #616161;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 2; 
+}
+
+
+.type-of-chat-item {
+    color: white;
+    cursor: pointer;
+    margin-bottom: 5px;
+    width: 180px;
+    background-color: #000000;
+    border-radius: 3px;
+}
+
+.type-of-chat-item:hover {
+    background-color: #fff9f9;
+}
+#sidebar {
+       
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+    }
+
+    .sidebar-button {
+        background-color: #ffffff;
+        color: rgb(2, 2, 2);
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block; 
+        width: 49%;
+        margin-right: 1%; 
+        height: 20px;
+    }
+
+    .sidebar-button:hover {
+        background-color:#f3b808;
+    }
+    .user-list {
+    /* display: none; */
+    position: fixed;
+    background-color: #171515;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin-top: 50px; 
+    width: 178px;
+    height: 300px;
+    margin-top: 75px;
+    max-height: 300px; 
+    overflow-y: auto;
+   
+} 
+#external-content {
+    width: 500px !important; 
+    height: 355px !important;
+    border: none;
+    display: none;
+    position: fixed; 
+  margin-top: 70px;
+   margin-bottom: 100px; 
+  margin-left: 220px;
+}
+.image{
+
+ position: relative;
+ display: inline-block;
+}
+
+.image:before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: #0b0b0b; 
+ opacity: 0.5;
+ z-index: 1;
+}
+
+.image img {
+ position: relative;
+ z-index: 2;
+}
+#profile-dropdown-container {
+  position: fixed;
+  top: 128px;
+  right: -25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#profile-dropdown-button
+{
+  /* background-color: #fff; */
+  color: #fff9f9;
+  padding: 5px;
+  /* border-radius: 6px;
+  border: 1px solid #000; */
+  margin-right: 66px;
+  margin-top: -91px;
+  height: 14px;
+}
+
+#profile-dropdown-content {
+  display: none;
+  background-color: #fff;
+  border: 1px solid #000;
+  height: 90%;
+  width: 15%;
+  position: fixed;
+  right: 0;
+  top: 6%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-right: 0%;
+  margin-top: 6%;
+  overflow-y: scroll;
+}
+
+#profile-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+#profile-dropdown-content a:hover {
+  background-color: #f1f1f1;
+  
+}
+
+.show {
+  display: block;
+}
+#profile-dropdown-content.show {
+  display: block;
+}
+
+.user-list::-webkit-scrollbar {
+        width: 0.5em;
+    }
+
+    .user-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .user-list::-webkit-scrollbar-thumb {
+        background-color: transparent;
+        outline: none;
+    }
+
+   
+    .user-list {
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+    }
+
+
+    #chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+#chat-messages::-webkit-scrollbar-track {
+    background-color: transparent; 
+}
+
+
+
+    </style>
+    
+</head>
+
+<body>
+    <div class= "leftbar "style="width: 16%; height: 100vh;position: fixed; background: linear-gradient(to right, #0f0c29, #302b63, #24243e);margin-top: 7%;margin-left: 84%" >  
+    </div>
+    <div class="navbar" style="display: flex; width: 101%; height: 110px; justify-content: space-between; ;margin-left: -10px; align-items: center;margin-top: -10px; position: fixed;background: linear-gradient(to right, #0f0c29, #302b63, #24243e);;">
+        <div class="backbutton">
+            <button onclick="goback()" style="background: none; border: none; position: absolute; top: 20px; cursor: pointer;">
+                <img src="icons8-back-48.png" alt="back" height="30px" width="30px">
+            </button>
+        </div>
+      
+        <div class="image" style="margin-left: -28%;">
+            <img src="N-chat.jpg" style="height: 100px; width: 120px;mix-blend-mode:hard-light;border-radius: 10px;" alt="Logo" />
+        </div>
+
+        
+        <div>
+            <h4 style="color: white; margin-right: 500px;font-size: 23px;">Teen Chat Room </h4>
+        </div>
+    
+    </div>
+
+     <div style="display: flex;">
+        
+        <div id="sidebar" style="width: 14%; height: 800px;background: linear-gradient(to right, #0f0c29, #302b63, #24243e); position: fixed; margin-top: 100px;margin-left: -10px;">
+            <div class="sidebar-button" onclick="switchTab('friends')">Friends</div>
+            <div class="sidebar-button" onclick="switchTab('online')">Online</div>
+           
+        </div> 
+        <div class="sidebar-button online" onclick="switchTab('online')">
+            Online <img id="arrow-icon-online" src="images/icons8-back-arrow" alt="Arrow Icon">
+        </div>
+            
+             <div id="search-bar" style="display: flex; flex-direction: row; align-items: center; margin-top: 10px;">
+                <input type="text" placeholder="Search...">
+            </div>
+        </div>
+    
+                
+        <div id="profile-dropdown-container">
+            <div id="profile-dropdown-button"> ☰ </div>
+            <div id="profile-dropdown-content">
+                <div id="box" style="background: linear-gradient(to bottom, #0f0c29, #efeff3); height: 160px; width: 185px; text-align: center; position: relative;">
+                    <img src="user7.jpg" style="height: 70px; width: 70px; margin-top: 10px; border-radius: 40px;" alt="Logo">
+                    <p class="name" style="margin-top: -3px; height: fit-content;">Username: Roy309</p>
+                    <p1 class="name" style="margin-top: 2px; height: fit-content;">Email: roy93@gmail.com</p1>
+                </div>
+
+
+
+                <a href="#" onclick="toggleDropdown('profile-settings-dropdown')">👤PROFILE Settings</a>
+<div id="profile-settings-dropdown" class="dropdown" style="display: none;">
+    
+    <a href="#"> Change Username</a>
+    <div style="position: relative;">
+        <div contenteditable="true" id="editableUsername" style="margin: 10px; background-color: #66666e; color: white; border: 1px solid #232222; padding: 5px; border-radius: 5px;">Roy</div>
+        <button onclick="saveUsername()" style="position: absolute; top: 0; right: 0;height: 30px">✔️</button>
+    </div>
+
+    <a href="#"> Change Email</a>
+    <div style="position: relative;">
+        <div contenteditable="true" id="editableEmail" style="margin: 10px; background-color: #66666e; color: white; border: 1px solid #232222; padding: 5px; border-radius: 5px;">roy93@gmail.com</div>
+        <button onclick="saveEmail()" style="position: absolute; top: 0; right: 0;height: 30px;">✔️</button>
+    </div>
+
+    <a href="#">BIO</a>
+    <div style="position: relative;">
+        <div contenteditable="true" id="editableEmail" style="margin: 10px; background-color: #66666e; color: white; border: 1px solid #232222; padding: 5px; border-radius: 5px;">NONE</div>
+        <button onclick="saveEmail()" style="position: absolute; top: 0; right: 0;height: 30px;">✔️</button>
+    </div>
+</div>
+
+
+
+
+
+    <a href="#" onclick="toggleDropdown('searchbar -dropdown')">👫Invite Friends</a>
+    <div id="searchbar -dropdown" class="dropdown" style="display: none;">
+        <div style="position: relative;">
+           
+            <div style="margin: 10px; position: relative;">
+                <input type="text" id="searchBar" placeholder="Search..." style="background-color: #66666e; color: white; border: 1px solid #232222; padding: 5px; border-radius: 5px;">
+                <button onclick="search()" style="position: absolute; top: 0; right: 0; height: 26px;margin-right: -10%;">🔍</button>
+            </div>
+</div>
+    </div>
+
+
+
+
+
+
+                <a href="#" onclick="toggleDropdown('settings-dropdown')">⚙️ SETTINGS</a>
+                <div id="settings-dropdown" class="dropdown" style="display: none;">
+                   
+                    <a href="#"> Change Password </a>
+                    <div style="position: relative;">
+                        <div contenteditable="true" id="editableEmail" style="margin: 10px; background-color: #66666e; color: white; border: 1px solid #232222; padding: 5px; border-radius: 5px;">roy93@gmail.com</div>
+                        <button onclick="saveEmail()" style="position: absolute; top: 0; right: 0;height: 30px;">✔️</button>
+                    </div>   
+                </div>
+
+
+
+
+
+                <a href="#" onclick="logout()">[→ LOGOUT</a>
+                </div>
+                </div>
+                
+             
+   
+
+    <div id="chat-container" style="display: flex; flex-direction: column; width: 100%;">
+        <div id="background-container"></div>
+        <iframe id="external-content" style="width: 100%; height: 90%; border: none; display: none;"></iframe>
+        <div id="chat-messages" style="overflow-y: auto; height: 72vh; position: relative; align-self: center;width: 800px; margin-left: -30px;  margin-top: 150px;width: 700px;">
+
+            <div class="message stranger">Stranger: Hello!</div>
+            <div class="message you">You: Hi there!</div>
+           
+        </div>
+        <div class="user-list" id="userList">
+            <button onclick="closeFile()">Close File</button>
+           
+        </div>
+
+        
+        <div class="rightbar" style="position: fixed; display: flex; width: 65%;  flex-direction: row; bottom: 0; right: 0; background: linear-gradient(to right, #0f0c29, #302b63, #24243e); padding: 20px;margin-right: 15%;">
+           
+           
+            <input class="text bar room " style="width: 90%" type="text" id="message-input" placeholder="Type your message..." />
+            
+            <button id="send-button"style="background: linear-gradient(to right, #0f0c29, #302b63, #24243e);color: white;" onclick="sendMessage()">Send</button>
+            <span><img src="icons3.png" alt="Icon" style="margin-left: 10px;height: 25px;"></span>
+            <span><img src="mike-.png" alt="Icon" style="margin-left: 20px;height: 25px;color: #dddddd;"></span>
+            
+        </div>
+    </div>
+
+    <script>
+        function goback() {
+         window.history.back();
+        }
+        let historyContainer = [];
+        let activeFile = null;
+        
+        const friends = [
+        { name: 'user1', action: 'user1' },
+            { name: 'user2',action:'user2' },
+            { name: 'user3',action:'user3' },
+            { name: 'user4',action:'user4' },
+            { name: 'user5',action:'user5' },
+            { name: 'user6',action:'user6' },
+            { name: 'user7',action:'user7' },
+            { name: 'user9',action:'user9' },
+            { name: 'user10',action:'user10' },
+           
+           
+           
+        ];
+    
+        const onlineUsers = [
+            { name: '🟢Mark', action: 'Mark' },
+            { name: '🟢John',action:'John' },
+            { name: '🟢Josh',action:'Josh' },
+            { name: '🟢Jansi',action:'Jansi' },
+            { name: '🟢Kick',action:'Kick' },
+            { name: '🟢Mike',action:'Mike' },
+            { name: '🟢Lisa',action:'Lisa' },
+            { name: '🟢User8',action:'user8' },
+            { name: '🟢User15',action:'user15' },
+            { name: '🟢User20',action:'user20' },
+           
+        ];
+        let activeTab = null; 
+
+        function fetchUsers(userList, users) {
+    userList.innerHTML = users.map(user => `<div>${user.name}</div>`).join('');
+
+   
+    const userButtons = userList.querySelectorAll('div');
+    userButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            handleUserAction(users.find(user => user.name === button.textContent).action);
+        });
+    });
+}
+
+
+function switchTab(tabName) {
+    const arrowIconOnline = document.getElementById('arrow-icon-online');
+    const userList = document.getElementById('userList');
+    const searchBar = document.getElementById('search-bar');
+    const externalContent = document.getElementById('external-content');
+
+    if (activeTab === tabName) {
+        toggleDropdown('userList');
+            externalContent.style.display = 'none';
+            activeTab = null;
+            isOpenOnline = false;
+            arrowIconOnline.src = 'images'; 
+    } else {
+        activeTab = tabName; 
+        if (tabName === 'friends') {
+            fetchUsers(userList, friends);
+            searchBar.style.display = 'none';
+            userList.style.display = 'block';
+            externalContent.style.display = 'none';
+
+            const friendsButton = document.querySelector('.sidebar-button.friends');
+            const onlineButton = document.querySelector('.sidebar-button.online');
+            friendsButton.innerHTML = `Friends (${friends.length})`;
+            onlineButton.innerHTML = 'Online';
+        } else if (tabName === 'online') {
+            fetchUsers(userList, onlineUsers);
+            searchBar.style.display = 'none';
+            userList.style.display = 'block';
+            externalContent.style.display = 'none';
+
+            const friendsButton = document.querySelector('.sidebar-button.friends');
+            const onlineButton = document.querySelector('.sidebar-button.online');
+            friendsButton.innerHTML = 'Friends';
+            onlineButton.innerHTML = `Online (${onlineUsers.length})`;
+        }
+
+        isOpenOnline = true;
+            arrowIconOnline.src = 'path/to/your/image_open.png';
+        toggleDropdown('userList');
+    }
+}
+
+
+
+
+function handleUserAction(action) {
+    const searchBar = document.getElementById('search-bar');
+    const userList = document.getElementById('userList');
+    const externalContent = document.getElementById('external-content');
+    
+    if (action === activeFile) {
+        closeFile();
+        activeFile = null; 
+    } else {
+        activeFile = action; 
+
+        if (onlineUsers.some(user => user.action === action)) {
+           
+            if (action === 'Mark') {
+                externalContent.src = 'n1.html';
+            } else if (action === 'John') {
+                externalContent.src = 'n2.html';
+            } else if (action === 'Josh') {
+                externalContent.src = 'n3.html';
+            } else if (action === 'Jansi') {
+                externalContent.src = 'n.html';
+            } else if (action === 'Kick') {
+                externalContent.src = 'n8.html';
+            } else if (action === 'user20') {
+                externalContent.src = 'n9.html';
+            } else if (action === 'Lisa') {
+                externalContent.src = 'n7.html';
+            } else if (action === 'Mike') {
+                externalContent.src = 'n6.html';
+            } else if (action === 'user8') {
+                externalContent.src = 'n10.html';
+            } else if (action === 'user15') {
+                externalContent.src = 'n3.html';
+            }
+        } else {
+           
+            if (action === 'user1') {
+                externalContent.src = 'user1.html';
+            } else if (action === 'user2') {
+                externalContent.src = 'user2.html';
+            } else if (action === 'user3') {
+                externalContent.src = 'user4.html';
+            } else if (action === 'user4') {
+                externalContent.src = 'user3.html';
+            } else if (action === 'user5') {
+                externalContent.src = 'user5.html';
+            }else if (action === 'user6') {
+                externalContent.src = 'user2.html';
+            } else if (action === 'user7') {
+                externalContent.src = 'user4.html';
+            } else if (action === 'user9') {
+                externalContent.src = 'n4.html';
+            } else if (action === 'user10') {
+                externalContent.src = 'n.html';
+            }
+        }
+
+        externalContent.style.display = 'block';
+        searchBar.style.display = 'flex';
+        userList.style.display = 'block';
+    }
+}
+
+
+function closeFile() {
+    const externalContent = document.getElementById('external-content');
+    const searchBar = document.getElementById('search-bar');
+    const userList = document.getElementById('userList');
+
+    externalContent.style.display = 'none';
+    searchBar.style.display = 'flex';
+    userList.style.display = 'block';
+
+    
+}
+
+  
+const profileDropdownButton = document.getElementById("profile-dropdown-button");
+const profileDropdownContent = document.getElementById("profile-dropdown-content");
+
+profileDropdownButton.addEventListener("click", function () {
+
+    profileDropdownContent.classList.toggle("show");
+});
+
+document.addEventListener("click", function (event) {
+    const targetElement = event.target;
+   
+    if (!targetElement.closest("#profile-dropdown-container")) {
+        profileDropdownContent.classList.remove("show");
+    }
+});
+
+
+
+
+    
+        function sendMessage() {
+            const messageInput = document.getElementById("message-input");
+            const message = messageInput.value.trim();
+    
+            if (message !== "") {
+        const chatMessages = document.getElementById("chat-messages");
+        const newMessage = document.createElement("div");
+        newMessage.className = "message you";
+        newMessage.textContent = "You: " + message;
+        chatMessages.appendChild(newMessage);
+
+       
+        for (let i = 0; i < 3; i++) {
+            setTimeout(function () {
+                const strangerResponse = document.createElement("div");
+                strangerResponse.className = "message stranger";
+                strangerResponse.textContent = getRandomStranger() + ": " + generateRandomReply();
+                chatMessages.appendChild(strangerResponse);
+
+                
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000 * (i + 1));
+        }
+
+       
+        messageInput.value = "";
+    }
+}
+
+function getRandomStranger() {
+    const strangerNumber = Math.floor(Math.random() * 10); 
+    return `Stranger${strangerNumber}`;
+}
+
+function generateRandomReply() {
+    const replies = [
+        "Hello!",
+        "How are you?",
+        "Nice to meet you!",
+        "What's up?",
+        "Tell me more...",
+        "where are you from",
+        "wt's your name ",
+        "your sweat name ",
+    ];
+    const randomIndex = Math.floor(Math.random() * replies.length);
+    return replies[randomIndex];
+}
+
+
+
+
+                    function toggleDropdown(dropdownId) {
+                        var dropdown = document.getElementById(dropdownId);
+                        dropdown.style.display = (dropdown.style.display === "none" || dropdown.style.display === "") ? "block" : "none";
+                    }
+            
+                    function saveUsername() {
+                        var editableUsername = document.getElementById("editableUsername");
+                        var newUsername = editableUsername.innerText;
+            
+                      
+                        console.log("Saved username:", newUsername);
+                    }
+            
+                    function saveEmail() {
+                        var editableEmail = document.getElementById("editableEmail");
+                        var newEmail = editableEmail.innerText;
+            
+                        
+                        console.log("Saved email:", newEmail);
+                    }
+                    
+                    
+                    
+                    var openDropdownId = null;
+
+function toggleDropdown(dropdownId) {
+    var dropdown = document.getElementById(dropdownId);
+
+    
+    if (openDropdownId && openDropdownId !== dropdownId) {
+        var previousDropdown = document.getElementById(openDropdownId);
+        previousDropdown.style.display = "none";
+    }
+
+    dropdown.style.display = (dropdown.style.display === "none" || dropdown.style.display === "") ? "block" : "none";
+    openDropdownId = dropdown.style.display === "block" ? dropdownId : null;
+}
+
+function logout() {
+   
+    window.location.href = "login.html";
+}
+
+
+
+
+
+
+                   
+    var openDropdownId = null;
+
+    function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+
+        
+        if (openDropdownId && openDropdownId !== dropdownId) {
+            var previousDropdown = document.getElementById(openDropdownId);
+            previousDropdown.style.display = "none";
+        }
+
+        dropdown.style.display = (dropdown.style.display === "none" || dropdown.style.display === "") ? "block" : "none";
+        openDropdownId = dropdown.style.display === "block" ? dropdownId : null;
+    }
+
+    function saveUsername() {
+        var editableUsername = document.getElementById("editableUsername");
+        var newUsername = editableUsername.innerText;
+        console.log("Saved username:", newUsername);
+    }
+
+    function saveEmail() {
+        var editableEmail = document.getElementById("editableEmail");
+        var newEmail = editableEmail.innerText;
+        console.log("Saved email:", newEmail);
+    }
+
+    function saveBio() {
+        var editableBio = document.getElementById("editableBio");
+        var newBio = editableBio.innerText;
+        console.log("Saved bio:", newBio);
+    }
+
+    function search() {
+        
+        console.log("Searching...");
+    }
+
+    function savePassword() {
+        var editablePassword = document.getElementById("editablePassword");
+        var newPassword = editablePassword.innerText;
+        console.log("Saved password:", newPassword);
+    }
+                
+</script>
+</body>
+
+</html>

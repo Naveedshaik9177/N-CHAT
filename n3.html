@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-...." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+
+
+    <title>N chat</title>
+    <style>
+
+
+
+
+        /* #chat-messages::-webkit-scrollbar {
+            display: table-row;
+        }
+
+         */
+
+
+        #background-container {
+            background-image: url('transparent.jpeg');
+            background-size: 80%;
+            
+            background-repeat: no-repeat;
+            height: 90%;
+            width: 150%;
+            flex-grow: 1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 15px;
+            bottom: 5px;
+            border-radius: 10px;
+
+            z-index: -1;
+        }
+
+
+
+        .message {
+            max-width: 70%;
+            word-wrap: break-word;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+
+        }
+
+        .you {
+            background-color: #e0e0e0;
+            align-self: flex-end; 
+        }
+
+        .stranger {
+            background-color: #aedcff;
+            align-self: flex-start; 
+        }
+
+        #input-container {
+            position: fixed;
+            display: flex;
+            width: 80%;
+            flex-direction: row;
+            bottom: 0;
+            right: 0;
+            background-color: beige;
+            padding: 20px;
+
+        }
+
+        #chat-messages {
+            overflow-y: scroll;
+            position: relative;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px;
+            width: 400px;
+            margin-left: 10px;
+            margin-top: 62px;
+        }
+
+
+
+
+
+        .green-bar {
+            background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+            height: 62px;
+            width: 500px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            margin-left: -10px;
+            position: fixed;
+            margin-top: -65px;
+            border-radius: 10px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile img {
+            width: 70px;
+            height: 60px;
+            border-radius: 25%;
+            margin-right: 10px;
+        }
+
+        .profile-name {
+            font-weight: bold;
+            color: white;
+            margin-left: 100px;
+        }
+
+        .menu-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .menu-icon i {
+            font-size: 24px;
+            color: rgb(14, 14, 14);
+            margin-left: 198px;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <div>
+        <h4 style="color: white; margin-right: 100px;"></h4>
+    </div>
+    <div>
+        <h4 style="color: white;margin-left: -100px;"></h4>
+    </div>
+
+
+
+    <div id="chat-container">
+        <div id="background-container"></div>
+
+        <div class="green-bar">
+            <div class="profile">
+                <img src="Viva Latino.jpg" alt="Profile Picture">
+                <span class="profile-name">josh</span>
+                <div class="menu-icon" id="memuIcon">
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="chat-messages" style="overflow-y: scroll; height: 55vh; position: relative;
+        margin-left: 10px; width: 95%;margin-top: 65px;
+       ;">
+        <div class="message stranger">Stranger: Hi there!</div>
+        <div class="message you">You: Hello!</div>
+        <div class="message stranger">Stranger: How are you !</div>
+        <div class="message you">You: fine, wt about you!</div>
+        <div class="message stranger">Stranger: yeah! I am good </div>
+
+    </div>
+    </div>
+    <div class="user-list" id="userList">
+    </div>
+
+
+    <div style="position: fixed; display: flex; width: 470px;border-radius: 5px; margin-top: 1%;     flex-direction: row; right: 0; background-color: rgb(250, 247, 247); padding: 15px;margin-right: 0px;">
+        <input style="width: 100%" type="text" id="message-input" placeholder="Type your message..." />
+        <button id="send-button" style="background: linear-gradient(to right, #0f0c29, #302b63, #24243e);color: white;"
+            onclick="sendMessage()">Send</button>
+
+    </div>
+    </div>
+
+    <script>
+
+        let historyContainer = [];
+
+        function fetchUsers() {
+            const userList = document.getElementById('userList');
+
+
+            if (historyContainer.length > 0) {
+
+                userList.innerHTML = historyContainer.join('');
+
+            } else {
+
+
+                userList.innerHTML = users.map(user => `<div>${user.name}</div>`).join('');
+
+            }
+        }
+
+
+        function sendMessage() {
+            const messageInput = document.getElementById("message-input");
+            const message = messageInput.value.trim();
+
+            if (message !== "") {
+                const chatMessages = document.getElementById("chat-messages");
+                const newMessage = document.createElement("div");
+                newMessage.className = "message you"; 
+                newMessage.textContent = "You: " + message; 
+                chatMessages.appendChild(newMessage);
+
+
+                setTimeout(function () {
+                    const strangerResponse = document.createElement("div");
+                    strangerResponse.className = "message stranger";
+                    strangerResponse.textContent = "Stranger: " + generateRandomReply();
+                    chatMessages.appendChild(strangerResponse);
+
+
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+
+
+                messageInput.value = "";
+            }
+        }
+
+        function generateRandomReply() {
+            const replies = [
+                "Hello!",
+                "How are you?",
+                "Nice to meet you!",
+                "What's up?",
+                "Tell me more...",
+            ];
+            const randomIndex = Math.floor(Math.random() * replies.length);
+            return replies[randomIndex];
+        }
+
+        function switchTab(tabName) {
+            const userList = document.getElementById('userList');
+            const searchBar = document.getElementById('search-bar');
+
+            if (tabName === 'chat') {
+
+                fetchUsers();
+                searchBar.style.display = 'none';
+                userList.style.display = 'block';
+                if (historyContainer.length === 0) {
+                    historyContainer = [...userList.children].map(userDiv => userDiv.outerHTML);
+                }
+            } else if (tabName === 'friends') {
+
+                userList.style.display = 'none';
+                searchBar.style.display = 'flex';
+            }
+
+
+        }
+
+        document.getElementById('friendsBtn').addEventListener('click', function () {
+            switchTab('friends');
+        });
+
+
+        document.getElementById('friendsBtn').addEventListener('click', function (event) {
+
+            event.stopPropagation();
+
+
+            const typeOfChatList = document.getElementById('typeOfChatList');
+            typeOfChatList.style.display = typeOfChatList.style.display === 'none' ? 'block' : 'none';
+        });
+
+
+        document.addEventListener('click', function () {
+            const typeOfChatList = document.getElementById('typeOfChatList');
+            typeOfChatList.style.display = 'none';
+        });
+        document.getElementById('memuIcon').addEventListener('click', function (event) {
+            event.stopPropagation();
+
+            const typeOfChatList = document.getElementById('typeOfChatList');
+            typeOfChatList.style.display = typeOfChatList.style.display === 'none' ? 'block' : 'none';
+        });
+
+        document.addEventListener('click', function () {
+            const typeOfChatList = document.getElementById('typeOfChatList');
+            typeOfChatList.style.display = 'none';
+        });
+
+
+    </script>
+</body>
+
+</html>
